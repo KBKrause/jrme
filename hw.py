@@ -1,18 +1,36 @@
 from weather import Weather, Unit
 import smtplib
 
-weather = Weather(unit=Unit.FAHRENHEIT)
+class JWeather:
 
-location = weather.lookup_by_location('indianapolis')
-forecasts = location.forecast
-for forecast in forecasts:
-    print(forecast.date + " : " + forecast.text)
+    # JRME resource library: file_lib
+    # Weather object:        weather
+    # location, forecasts:   location
+    #                        forecasts
 
-server = smtplib.SMTP('smtp.gmail.com', 587)
-server.starttls()
-server.login("chukareth@gmail.com", "###")
+    def initWeather(self):
+        self.location = self.weather.lookup_by_location('indianapolis')
+        self.location = self.weather.lookup_by_location('indianapolis')
+        self.forecasts = self.location.forecast
 
-msg = "Hello world!"
+    def __init__(self):
+        self.file_lib = open("lib")
+        self.weather = Weather(unit=Unit.FAHRENHEIT)
+        self.initWeather()
 
-server.sendmail("chukareth@gmail.com", "kkrause2@carthage.edu", msg)
-server.quit()
+    def printForecasts(self):      
+        for forecast in self.forecasts:
+            print(forecast.date + " : " + forecast.text)
+
+jweather = JWeather()
+jweather.printForecasts()
+#jweather.printForcasts()
+
+# server = smtplib.SMTP('smtp.gmail.com', 587)
+# server.starttls()
+# server.login("chukareth@gmail.com", "###")
+
+# msg = "Hello world!"
+
+# server.sendmail("chukareth@gmail.com", "kkrause2@carthage.edu", msg)
+# server.quit()
